@@ -1,12 +1,16 @@
 ### DIRECTIVES POUR LA CONSTRUCTION DU PROJET
+
 ---
-* Placez vos noms au début du fichier Principal.java.
+
+* ~~Placez vos noms au début du fichier Principal.java.~~
 * Lorsque vous ajoutez une méthode, vous devez l’ajouter dans la classe appropriée.
 * Des tests vous seront donnés avec les résultats attendus.
 
 ### DIRECTIVES POUR L’ÉCRITURE DU CODE.
+
 ---
-1. Le TP est à faire seul ou en équipe de deux.
+
+1. ~~Le TP est à faire seul ou en équipe de deux.~~
 2. Code :
     + Pas de goto, continue.
     + Les break ne peuvent apparaitre que dans les switch.
