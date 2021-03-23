@@ -1,5 +1,6 @@
 public class Constantes {
 //  Messages du programme
+    public static final String MSG_ARRET_PROGRAMME = "Arrêt du programme.";
     public static final String MSG_ERR_FICHIER = "Le fichier n'existe pas.";
     public static final String MSG_ERR_COMMANDES = "Le fichier contient une ligne qui a 0 ou plus d'une commande.";
 

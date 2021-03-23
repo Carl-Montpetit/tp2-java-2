@@ -53,6 +53,7 @@ public class Principal {
             scanner = new Scanner( fichier );
         } catch ( FileNotFoundException e ) {
             System.err.println(Constantes.MSG_ERR_FICHIER);
+            System.err.println(Constantes.MSG_ARRET_PROGRAMME);
             System.exit(0);
         }
         while(scanner.hasNext()){
@@ -85,6 +86,10 @@ public class Principal {
         return nombreDOccurrences;
     }
 
+    /**
+     * Vérifie si chaque ligne du fichier n'a qu'une seule commande.
+     * @param fichier La liste qui contient les lignes du fichier.
+     */
     public static void verificationNbCommandes(ArrayList<String> fichier){
         int nbCommande;
         ArrayList<String> commande = new ArrayList<>(Arrays.asList(Constantes.COMMANDE_ABSTRAIT,
@@ -98,6 +103,7 @@ public class Principal {
             }
             if(nbCommande != 1){
                 System.err.println(Constantes.MSG_ERR_COMMANDES);
+                System.err.println(Constantes.MSG_ARRET_PROGRAMME);
                 System.exit(0);
             }
         }
