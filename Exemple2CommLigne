@@ -8,8 +8,7 @@ classeDebut( E )
 methodeDebut( void, m1 )
 methodeFin
 abstrait
-methodeDebut( void m2 )
-parametre( int p1 )
+methodeDebut( void m2 )parametre( int p1 )
 parametre( int, p2 )
 methodeFin
 classeFin

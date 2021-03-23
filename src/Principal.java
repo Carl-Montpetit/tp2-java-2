@@ -1,6 +1,7 @@
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Scanner;
 
 /**
@@ -17,6 +18,10 @@ import java.util.Scanner;
  */
 
 public class Principal {
+
+    /******************************************************************************************************************/
+    // Méthodes d'entrées et de vérification de la syntaxe
+    /******************************************************************************************************************/
 
     /**
      * Retourne le nom du fichier qui sera lu.
@@ -47,7 +52,7 @@ public class Principal {
         try {
             scanner = new Scanner( fichier );
         } catch ( FileNotFoundException e ) {
-            System.err.println("Le fichier n'existe pas.");
+            System.err.println(Constantes.MSG_ERR_FICHIER);
             System.exit(0);
         }
         while(scanner.hasNext()){
@@ -61,15 +66,54 @@ public class Principal {
         return ligneFichier;
     }
 
+    /**
+     * Retourne le nombre d'occurrences d'une certaine commande dans la ligne (du fichier).
+     * @param ligne La ligne dans laquelle il peut y avoir zero, une ou des commandes.
+     * @param commande La commande qu'on cherche dans la ligne.
+     * @return Le nomnbre d'occurrence de la commande dans la ligne.
+     */
+    public static int nbCommandeSpec(String ligne,String commande){
+        int dernierOcc = 0;
+        int nombreDOccurrences = 0;
+        while(dernierOcc != -1){
+            dernierOcc = ligne.indexOf(commande,dernierOcc);
+            if(dernierOcc != -1){
+                nombreDOccurrences ++;
+                dernierOcc += commande.length();
+            }
+        }
+        return nombreDOccurrences;
+    }
+
+    public static void verificationNbCommandes(ArrayList<String> fichier){
+        int nbCommande;
+        ArrayList<String> commande = new ArrayList<>(Arrays.asList(Constantes.COMMANDE_ABSTRAIT,
+                Constantes.COMMANDE_ATTRIBUT, Constantes.COMMANDE_CLASSE_DEBUT, Constantes.COMMANDE_CLASSE_FIN,
+                Constantes.COMMANDE_METHODE_DEBUT, Constantes.COMMANDE_METHODE_FIN, Constantes.COMMANDE_PARAMETRE));
+        for(int i = 0; i< fichier.size(); i++){
+            String ligne = fichier.get(i);
+            nbCommande = 0;
+            for(int j = 0; j<commande.size(); j++){
+                nbCommande = nbCommande + nbCommandeSpec(ligne, commande.get(j));
+            }
+            if(nbCommande != 1){
+                System.err.println(Constantes.MSG_ERR_COMMANDES);
+                System.exit(0);
+            }
+        }
+
+    }
+
     public static void main(String[] args) {
 //        Demander le nom du fichier et créer un ArrayList contenant les lignes non vides du fichier sans les espaces.
         Scanner sc = new Scanner(System.in);
         String nomFichier = demanderNomFichier(sc);
 
         ArrayList<String> fichier = lireFichier(nomFichier);
-        System.out.println(fichier);
+//        System.out.println(fichier);
 
-
+        verificationNbCommandes(fichier);
+//        System.out.println("good");
 
     }
 }
