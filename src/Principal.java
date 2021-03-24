@@ -20,6 +20,18 @@ import java.util.Scanner;
 public class Principal {
 
     /******************************************************************************************************************/
+    // Méthodes d'affichage
+    /******************************************************************************************************************/
+
+    /**
+     * Affiche le message d'arrêt de programme.
+     */
+    public static void affichageArret(){
+        System.err.println(Constantes.MSG_ARRET_PROGRAMME);
+        System.exit(0);
+    }
+
+    /******************************************************************************************************************/
     // Méthodes d'entrées et de vérification de la syntaxe
     /******************************************************************************************************************/
 
@@ -53,8 +65,7 @@ public class Principal {
             scanner = new Scanner( fichier );
         } catch ( FileNotFoundException e ) {
             System.err.println(Constantes.MSG_ERR_FICHIER);
-            System.err.println(Constantes.MSG_ARRET_PROGRAMME);
-            System.exit(0);
+            affichageArret();
         }
         while(scanner.hasNext()){
             ligne = scanner.nextLine();
@@ -88,7 +99,7 @@ public class Principal {
 
     /**
      * Vérifie si chaque ligne du fichier n'a qu'une seule commande.
-     * @param fichier La liste qui contient les lignes du fichier.
+     * @param fichier La liste qui contient les lignes de commande du fichier.
      */
     public static void verificationNbCommandes(ArrayList<String> fichier){
         int nbCommande;
@@ -103,11 +114,80 @@ public class Principal {
             }
             if(nbCommande != 1){
                 System.err.println(Constantes.MSG_ERR_COMMANDES);
-                System.err.println(Constantes.MSG_ARRET_PROGRAMME);
-                System.exit(0);
+                affichageArret();
             }
         }
 
+    }
+
+    /**
+     * Vérifie la syntaxe de la commande de type unaire.
+     * @param commande La commande à vérifier.
+     */
+    public static void verificationUnaire(String commande){
+        if(!commande.startsWith(Constantes.COMMANDE_CLASSE_DEBUT + "(") || !commande.endsWith(")")){
+            System.err.println(Constantes.MSG_ERR_TYPE_COMMANDE);
+            affichageArret();
+        }
+
+        String identificateur = commande.substring(12,commande.length()-1);
+        if(!identificateur.matches("^[a-zA-Z_][a-zA-Z0-9_]*$")){
+            System.err.println(Constantes.MSG_ERR_FORMAT_IDENTIFICATEUR);
+            affichageArret();
+        }
+    }
+
+
+    /**
+     * Vérifie la syntaxe de la commande de type binaire.
+     * @param commande La commande à vérifier.
+     */
+    public static void verificationBinaire(String commande){
+        if((!commande.startsWith(Constantes.COMMANDE_METHODE_DEBUT + "(") &&
+                !commande.startsWith(Constantes.COMMANDE_ATTRIBUT + "(") &&
+                !commande.startsWith(Constantes.COMMANDE_PARAMETRE + "(")) || !commande.endsWith(")")){
+            System.err.println(Constantes.MSG_ERR_TYPE_COMMANDE);
+            affichageArret();
+        }
+
+        String identificateur;
+        if(commande.contains(Constantes.COMMANDE_METHODE_DEBUT)){
+            identificateur = commande.substring(13,commande.length()-1);
+
+        }else if(commande.contains(Constantes.COMMANDE_ATTRIBUT)){
+            identificateur = commande.substring(9,commande.length()-1);
+
+        }else{
+            identificateur = commande.substring(10,commande.length()-1);
+
+        }
+        if(!identificateur.matches("^[a-zA-Z_][a-zA-Z0-9_]*(,)[a-zA-Z_][a-zA-Z0-9_]*$")){
+            System.err.println(Constantes.MSG_ERR_FORMAT_IDENTIFICATEUR);
+            affichageArret();
+        }
+    }
+
+    /**
+     * Vérifie si la commande est écrite de manière valide.
+     * @param fichier La liste qui contient les lignes de commande du fichier.
+     */
+    public static void verificationCommandeSyntaxe(ArrayList<String> fichier){
+        String commande;
+        for(int i = 0; i< fichier.size(); i++){
+            commande = fichier.get(i);
+            if(commande.contains(Constantes.COMMANDE_CLASSE_FIN) || commande.contains(Constantes.COMMANDE_METHODE_FIN)
+                    || commande.contains(Constantes.COMMANDE_ABSTRAIT)){
+                if(!commande.equals(Constantes.COMMANDE_CLASSE_FIN) && !commande.equals(Constantes.COMMANDE_METHODE_FIN)
+                        && !commande.equals(Constantes.COMMANDE_ABSTRAIT)){
+                    System.err.println(Constantes.MSG_ERR_TYPE_COMMANDE);
+                    affichageArret();
+                }
+            }else if(commande.contains(Constantes.COMMANDE_CLASSE_DEBUT)){
+                verificationUnaire(commande);
+            }else{
+                verificationBinaire(commande);
+            }
+        }
     }
 
     public static void main(String[] args) {
@@ -120,6 +200,7 @@ public class Principal {
 
         verificationNbCommandes(fichier);
 //        System.out.println("good");
+        verificationCommandeSyntaxe(fichier);
 
     }
 }

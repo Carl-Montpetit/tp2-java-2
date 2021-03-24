@@ -3,6 +3,9 @@ public class Constantes {
     public static final String MSG_ARRET_PROGRAMME = "Arrêt du programme.";
     public static final String MSG_ERR_FICHIER = "Le fichier n'existe pas.";
     public static final String MSG_ERR_COMMANDES = "Le fichier contient une ligne qui a 0 ou plus d'une commande.";
+    public static final String MSG_ERR_TYPE_COMMANDE = "Le fichier contient une ligne de commande mal écrite.";
+    public static final String MSG_ERR_FORMAT_IDENTIFICATEUR = "Un ou des identificateurs d'une des commandes ne sont" +
+            " pas écrits dans le bon format.";
 
 //  Noms des commandes
     public static final String COMMANDE_CLASSE_FIN = "classeFin";
