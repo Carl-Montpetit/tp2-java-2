@@ -13,4 +13,8 @@
  * Elles vont donc automatiquement implémenter l’interface Expression.
  */
 public class MethodeFin extends Commande implements Expression {
+    @Override
+    public void interprete(ContexteInterpretation contexte) {
+
+    }
 }

@@ -13,4 +13,8 @@
  * Elles vont donc automatiquement implémenter l’interface Expression.
  */
 public class MethodeDebut extends Commande implements Expression {
+    @Override
+    public void interprete(ContexteInterpretation contexte) {
+
+    }
 }

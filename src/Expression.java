@@ -20,4 +20,6 @@ public interface Expression {
   * programme, vous devez appeler la méthode interprete sur chaque Commande, une après l’autre,
   * en utilisant le même contexte d’interprétation pour chacune.
   */
+
+ void interprete( ContexteInterpretation contexte );
 }
