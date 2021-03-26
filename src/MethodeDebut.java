@@ -13,8 +13,17 @@
  * Elles vont donc automatiquement implémenter l’interface Expression.
  */
 public class MethodeDebut extends Commande implements Expression {
+
+    public String typeMethode;
+    public String nomMethode;
+
+    public MethodeDebut(String typeMethode, String nomMethode) {
+        this.typeMethode = typeMethode;
+        this.nomMethode = nomMethode;
+    }
+
     @Override
     public void interprete(ContexteInterpretation contexte) {
-
+        contexte.genDebutMethode(this);
     }
 }

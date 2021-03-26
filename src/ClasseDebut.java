@@ -13,8 +13,15 @@
  * Elles vont donc automatiquement implémenter l’interface Expression.
  */
 public class ClasseDebut extends Commande implements Expression {
+
+    public String nomClasse;
+
+    public ClasseDebut(String nomClasse) {
+        this.nomClasse = nomClasse;
+    }
+
     @Override
     public void interprete(ContexteInterpretation contexte) {
-
+        contexte.genDebutClasse(this);
     }
 }

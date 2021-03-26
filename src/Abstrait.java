@@ -15,6 +15,6 @@
 public class Abstrait extends Commande implements Expression {
     @Override
     public void interprete(ContexteInterpretation contexte) {
-
+        contexte.genAbstrait(this);
     }
 }

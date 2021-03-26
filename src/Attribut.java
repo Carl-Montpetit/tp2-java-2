@@ -13,8 +13,17 @@
  * Elles vont donc automatiquement implémenter l’interface Expression.
  */
 public class Attribut extends Commande implements Expression {
+
+    public String typeAttribut;
+    public String nomAttribut;
+
+    public Attribut(String typeAttribut, String nomAttribut) {
+        this.typeAttribut = typeAttribut;
+        this.nomAttribut = nomAttribut;
+    }
+
     @Override
     public void interprete(ContexteInterpretation contexte) {
-
+        contexte.genAttribut(this);
     }
 }

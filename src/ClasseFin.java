@@ -15,6 +15,6 @@
 public class ClasseFin extends Commande implements Expression {
     @Override
     public void interprete(ContexteInterpretation contexte) {
-
+        contexte.genFinClasse(this);
     }
 }

@@ -13,8 +13,17 @@
  * Elles vont donc automatiquement implémenter l’interface Expression.
  */
 public class Parametre extends Commande implements Expression {
+
+    public String typeParametre;
+    public String nomParametre;
+
+    public Parametre(String typeParametre, String nomParametre) {
+        this.typeParametre = typeParametre;
+        this.nomParametre = nomParametre;
+    }
+
     @Override
     public void interprete(ContexteInterpretation contexte) {
-
+        contexte.genParametre(this);
     }
 }
