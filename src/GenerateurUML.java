@@ -9,7 +9,46 @@
  *
  * TODO Je suis pas certain de tout ca encore peut etre que ca va aller dans un main??
  */
-public abstract class GenerateurUML implements ContexteInterpretation {
+public class GenerateurUML implements ContexteInterpretation {
+	@Override
+	public void genDebutClasse(ClasseDebut classeDebut) {
+
+	}
+
+	@Override
+	public void genFinClasse(ClasseFin classeFin) {
+
+	}
+
+	@Override
+	public void genDebutMethode(MethodeDebut methodeDebut) {
+
+	}
+
+	@Override
+	public void genAttribut(Attribut attribut) {
+
+	}
+
+	@Override
+	public void genAbstrait(Abstrait abstrait) {
+
+	}
+
+	@Override
+	public void genParametre(Parametre parametre) {
+
+	}
+
+	@Override
+	public void genFinMethode(MethodeFin methodeFin) {
+
+	}
+
+	@Override
+	public void interpreteLogiciel(Logiciel logiciel) {
+
+	}
 	/**
 	 * Finalement, pour lancer votre interpréteur, il suffit de construire une instance de la classe de contexte
 	 * d’interprétation de l’interpréteur voulu. Ensuite, il reste à démarrer l’interprétation du programme avec
