@@ -47,7 +47,7 @@ public class GenerateurUML implements ContexteInterpretation {
 
 	@Override
 	public void interpreteLogiciel(Logiciel logiciel) {
-
+		logiciel.forEach((e) -> e.interprete(this));
 	}
 	/**
 	 * Finalement, pour lancer votre interpréteur, il suffit de construire une instance de la classe de contexte
