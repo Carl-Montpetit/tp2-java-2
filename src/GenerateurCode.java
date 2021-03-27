@@ -1,5 +1,6 @@
 // Il va implémenter ContexteInterpretation
 // C'est le deuxième interpréteur
+// pile de fichier
 public class GenerateurCode implements ContexteInterpretation{
     @Override
     public void genDebutClasse(ClasseDebut classeDebut) {

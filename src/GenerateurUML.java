@@ -9,7 +9,7 @@
  *
  * TODO Je suis pas certain de tout ca encore peut etre que ca va aller dans un main??
  */
-public abstract class ClasseX implements ContexteInterpretation {
+public abstract class GenerateurUML implements ContexteInterpretation {
 	/**
 	 * Finalement, pour lancer votre interpréteur, il suffit de construire une instance de la classe de contexte
 	 * d’interprétation de l’interpréteur voulu. Ensuite, il reste à démarrer l’interprétation du programme avec

@@ -1,5 +1,6 @@
 // Il va implémenter ContexteInterpretation
 // C'est le premier interpréteur
+// variable instances (boolean et int)
 public class Ordre implements ContexteInterpretation{
     @Override
     public void genDebutClasse(ClasseDebut classeDebut) {

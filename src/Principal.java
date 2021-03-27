@@ -191,6 +191,8 @@ public class Principal {
         }
     }
 
+
+
     public static void main(String[] args) {
 //        Demander le nom du fichier et créer un ArrayList contenant les lignes non vides du fichier sans les espaces.
         Scanner sc = new Scanner(System.in);
