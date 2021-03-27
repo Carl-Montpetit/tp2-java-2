@@ -152,15 +152,16 @@ public class Principal {
 
         String identificateur;
         if(commande.contains(Constantes.COMMANDE_METHODE_DEBUT)){
-            identificateur = commande.substring(13,commande.length()-1);
+            identificateur = commande.substring(13, commande.length()-1);
 
         }else if(commande.contains(Constantes.COMMANDE_ATTRIBUT)){
-            identificateur = commande.substring(9,commande.length()-1);
+            identificateur = commande.substring(9, commande.length()-1);
 
         }else{
-            identificateur = commande.substring(10,commande.length()-1);
+            identificateur = commande.substring(10, commande.length()-1);
 
         }
+
         if(!identificateur.matches("^[a-zA-Z_][a-zA-Z0-9_]*(,)[a-zA-Z_][a-zA-Z0-9_]*$")){
             System.err.println(Constantes.MSG_ERR_FORMAT_IDENTIFICATEUR);
             affichageArret();
@@ -201,6 +202,8 @@ public class Principal {
         verificationNbCommandes(fichier);
 //        System.out.println("good");
         verificationCommandeSyntaxe(fichier);
+
+
 
     }
 }
