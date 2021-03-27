@@ -17,4 +17,5 @@ public interface ContexteInterpretation {
 	void genAbstrait( Abstrait abstrait);
 	void genParametre( Parametre parametre);
 	void genFinMethode( MethodeFin methodeFin);
+	void interpreteLogiciel(Logiciel logiciel);
 }

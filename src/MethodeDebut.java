@@ -26,4 +26,12 @@ public class MethodeDebut extends Commande implements Expression {
     public void interprete(ContexteInterpretation contexte) {
         contexte.genDebutMethode(this);
     }
+
+    @Override
+    public String toString() {
+        return "MethodeDebut{" +
+                "typeMethode='" + typeMethode + '\'' +
+                ", nomMethode='" + nomMethode + '\'' +
+                '}';
+    }
 }

@@ -26,4 +26,12 @@ public class Attribut extends Commande implements Expression {
     public void interprete(ContexteInterpretation contexte) {
         contexte.genAttribut(this);
     }
+
+    @Override
+    public String toString() {
+        return "Attribut{" +
+                "typeAttribut='" + typeAttribut + '\'' +
+                ", nomAttribut='" + nomAttribut + '\'' +
+                '}';
+    }
 }

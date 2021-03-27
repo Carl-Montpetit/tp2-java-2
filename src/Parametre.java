@@ -26,4 +26,12 @@ public class Parametre extends Commande implements Expression {
     public void interprete(ContexteInterpretation contexte) {
         contexte.genParametre(this);
     }
+
+    @Override
+    public String toString() {
+        return "Parametre{" +
+                "typeParametre='" + typeParametre + '\'' +
+                ", nomParametre='" + nomParametre + '\'' +
+                '}';
+    }
 }

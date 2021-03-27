@@ -24,4 +24,11 @@ public class ClasseDebut extends Commande implements Expression {
     public void interprete(ContexteInterpretation contexte) {
         contexte.genDebutClasse(this);
     }
+
+    @Override
+    public String toString() {
+        return "ClasseDebut{" +
+                "nomClasse='" + nomClasse + '\'' +
+                '}';
+    }
 }

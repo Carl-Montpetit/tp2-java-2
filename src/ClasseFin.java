@@ -17,4 +17,9 @@ public class ClasseFin extends Commande implements Expression {
     public void interprete(ContexteInterpretation contexte) {
         contexte.genFinClasse(this);
     }
+
+    @Override
+    public String toString() {
+        return "ClasseFin";
+    }
 }
