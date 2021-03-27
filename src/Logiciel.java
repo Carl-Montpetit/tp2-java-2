@@ -10,15 +10,10 @@ public class Logiciel extends ArrayList<Commande> implements Expression{
     @Override
     public String toString() {
         String a = "";
-        int nombre = 0;
 
         for(Commande i : this){
             a += i;
-            nombre++;
-            if(nombre>10){
-                nombre = 0;
-                a += "\n";
-            }
+            a += "\n";
         }
         return a;
     }

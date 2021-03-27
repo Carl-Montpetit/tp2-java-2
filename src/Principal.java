@@ -191,7 +191,104 @@ public class Principal {
         }
     }
 
+    /**
+     * Retourne la commande nullaire décrite par la chaîne de caractères.
+     * @param nullaire La chaîne de caractères qui décrit une commande nullaire.
+     * @return La commande nullaire.
+     */
+    public static Commande transformerNullaire(String nullaire){
+        Commande nom;
+        if(nullaire.contains(Constantes.COMMANDE_CLASSE_FIN)){
+            nom = new ClasseFin();
+        }else if(nullaire.contains(Constantes.COMMANDE_METHODE_FIN)){
+            nom = new MethodeFin();
+        }else{
+            nom = new Abstrait();
+        }
+        return nom;
+    }
 
+    /**
+     * Retourne la commande unaire décrite par la chaîne de caractères.
+     * @param unaire La chaîne de caractères qui décrit une commande unaire (ClasseDebut).
+     * @return La commande unaire.
+     */
+    public static Commande transformerUnaire(String unaire){
+        String identificateur = unaire.substring(12,unaire.length()-1);
+        Commande nom = new ClasseDebut(identificateur);
+
+        return nom;
+    }
+
+
+    /**
+     * Retourne la commande unaire décrite par la chaîne de caractères.
+     * @param binaire La chaîne de caractères qui décrit une commande binaire.
+     * @return La commande binaire.
+     */
+    public static Commande transformerBinaire(String binaire){
+        Commande nom;
+        String identificateur;
+        String[] elements;
+        String element1;
+        String element2;
+
+        if(binaire.contains(Constantes.COMMANDE_METHODE_DEBUT)){
+            identificateur = binaire.substring(13, binaire.length()-1);
+            elements = identificateur.split(",");
+            element1 = elements[0];
+            element2 = elements[1];
+            nom = new MethodeDebut(element1,element2);
+
+        }else if(binaire.contains(Constantes.COMMANDE_ATTRIBUT)){
+            identificateur = binaire.substring(9, binaire.length()-1);
+            elements = identificateur.split(",");
+            element1 = elements[0];
+            element2 = elements[1];
+            nom = new Attribut(element1,element2);
+
+        }else{
+            identificateur = binaire.substring(10, binaire.length()-1);
+            elements = identificateur.split(",");
+            element1 = elements[0];
+            element2 = elements[1];
+            nom = new Parametre(element1,element2);
+
+        }
+        return nom;
+    }
+
+    /**
+     * Retourne un logiciel contenant les commandes du fichier.
+     * @param fichier La liste de commande se trouvant dans le fichier.
+     * @return Le logiciel du fichier.
+     */
+    public static Logiciel transformerListe(ArrayList<String> fichier){
+        Logiciel logiciel = new Logiciel();
+        String commande;
+        Commande nom;
+
+        for(int i = 0; i < fichier.size(); i++){
+            commande = fichier.get(i);
+
+            if(commande.contains(Constantes.COMMANDE_CLASSE_FIN) || commande.contains(Constantes.COMMANDE_METHODE_FIN)
+                    || commande.contains(Constantes.COMMANDE_ABSTRAIT)){
+                nom = transformerNullaire(commande);
+                logiciel.add(nom);
+
+            }else if(commande.contains(Constantes.COMMANDE_CLASSE_DEBUT)){
+                nom = transformerUnaire(commande);
+                logiciel.add(nom);
+
+            }else{
+                nom = transformerBinaire(commande);
+                logiciel.add(nom);
+
+            }
+
+        }
+        return logiciel;
+    }
 
     public static void main(String[] args) {
 //        Demander le nom du fichier et créer un ArrayList contenant les lignes non vides du fichier sans les espaces.
@@ -205,7 +302,8 @@ public class Principal {
 //        System.out.println("good");
         verificationCommandeSyntaxe(fichier);
 
-
+        Logiciel logiciel = transformerListe(fichier);
+//        System.out.println(logiciel);
 
     }
 }
