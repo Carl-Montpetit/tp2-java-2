@@ -3,35 +3,33 @@
  */
 
 /**
- * Chacune des commandes du langage
- * sera représentée par une classe : Abstrait, ClasseDebut, ClasseFin, Attribut,
+ * Chacune des commandes du langage sera représentée par une classe : Abstrait, ClasseDebut, ClasseFin, Attribut,
  * MethodeDebut, Parametre et MethodeFin.
- *
- * Chacune de ces classes doit hériter de la classe
- * Commande.
- *
+ * <p>
+ * Chacune de ces classes doit hériter de la classe Commande.
+ * <p>
  * Elles vont donc automatiquement implémenter l’interface Expression.
  */
 public class Attribut extends Commande implements Expression {
 
-    public String typeAttribut;
-    public String nomAttribut;
+	public String typeAttribut;
+	public String nomAttribut;
 
-    public Attribut(String typeAttribut, String nomAttribut) {
-        this.typeAttribut = typeAttribut;
-        this.nomAttribut = nomAttribut;
-    }
+	public Attribut( String typeAttribut, String nomAttribut ) {
+		this.typeAttribut = typeAttribut;
+		this.nomAttribut = nomAttribut;
+	}
 
-    @Override
-    public void interprete(ContexteInterpretation contexte) {
-        contexte.genAttribut(this);
-    }
+	@Override
+	public void interprete( ContexteInterpretation contexte ) {
+		contexte.genAttribut( this );
+	}
 
-    @Override
-    public String toString() {
-        return "Attribut{" +
-                "typeAttribut='" + typeAttribut + '\'' +
-                ", nomAttribut='" + nomAttribut + '\'' +
-                '}';
-    }
+	@Override
+	public String toString() {
+		return "Attribut{" +
+				"typeAttribut='" + typeAttribut + '\'' +
+				", nomAttribut='" + nomAttribut + '\'' +
+				'}';
+	}
 }

@@ -19,6 +19,23 @@ import java.util.Scanner;
 
 public class Principal {
 
+    public static void main(String[] args) {
+//        Demander le nom du fichier et créer un ArrayList contenant les lignes non vides du fichier sans les espaces.
+        Scanner sc = new Scanner(System.in);
+        String nomFichier = demanderNomFichier(sc);
+
+        ArrayList<String> fichier = lireFichier(nomFichier);
+//        System.out.println(fichier);
+
+        verificationNbCommandes(fichier);
+//        System.out.println("good");
+        verificationCommandeSyntaxe(fichier);
+
+        Logiciel logiciel = transformerListe(fichier);
+//        System.out.println(logiciel);
+
+    }
+
     /******************************************************************************************************************/
     // Méthodes d'affichage
     /******************************************************************************************************************/
@@ -288,22 +305,5 @@ public class Principal {
 
         }
         return logiciel;
-    }
-
-    public static void main(String[] args) {
-//        Demander le nom du fichier et créer un ArrayList contenant les lignes non vides du fichier sans les espaces.
-        Scanner sc = new Scanner(System.in);
-        String nomFichier = demanderNomFichier(sc);
-
-        ArrayList<String> fichier = lireFichier(nomFichier);
-//        System.out.println(fichier);
-
-        verificationNbCommandes(fichier);
-//        System.out.println("good");
-        verificationCommandeSyntaxe(fichier);
-
-        Logiciel logiciel = transformerListe(fichier);
-//        System.out.println(logiciel);
-
     }
 }

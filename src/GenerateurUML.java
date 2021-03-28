@@ -3,51 +3,51 @@
  */
 
 /**
- * Ensuite, il vous reste à construire une classe implémentant le ContexteInterpretation pour
- * chaque interpréteur. Cette classe va contenir les variables d’instance représentant l’état et va
- * implémenter les méthodes pour chacune des actions.
- *
+ * Ensuite, il vous reste à construire une classe implémentant le ContexteInterpretation pour chaque interpréteur. Cette
+ * classe va contenir les variables d’instance représentant l’état et va implémenter les méthodes pour chacune des
+ * actions.
+ * <p>
  * TODO Je suis pas certain de tout ca encore peut etre que ca va aller dans un main??
  */
 public class GenerateurUML implements ContexteInterpretation {
 	@Override
-	public void genDebutClasse(ClasseDebut classeDebut) {
+	public void genDebutClasse( ClasseDebut classeDebut ) {
 
 	}
 
 	@Override
-	public void genFinClasse(ClasseFin classeFin) {
+	public void genFinClasse( ClasseFin classeFin ) {
 
 	}
 
 	@Override
-	public void genDebutMethode(MethodeDebut methodeDebut) {
+	public void genDebutMethode( MethodeDebut methodeDebut ) {
 
 	}
 
 	@Override
-	public void genAttribut(Attribut attribut) {
+	public void genAttribut( Attribut attribut ) {
 
 	}
 
 	@Override
-	public void genAbstrait(Abstrait abstrait) {
+	public void genAbstrait( Abstrait abstrait ) {
 
 	}
 
 	@Override
-	public void genParametre(Parametre parametre) {
+	public void genParametre( Parametre parametre ) {
 
 	}
 
 	@Override
-	public void genFinMethode(MethodeFin methodeFin) {
+	public void genFinMethode( MethodeFin methodeFin ) {
 
 	}
 
 	@Override
-	public void interpreteLogiciel(Logiciel logiciel) {
-		logiciel.forEach((e) -> e.interprete(this));
+	public void interpreteLogiciel( Logiciel logiciel ) {
+		logiciel.forEach( ( e ) -> e.interprete( this ) );
 	}
 	/**
 	 * Finalement, pour lancer votre interpréteur, il suffit de construire une instance de la classe de contexte

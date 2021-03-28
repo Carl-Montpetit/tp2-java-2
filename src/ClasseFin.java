@@ -3,23 +3,21 @@
  */
 
 /**
- * Chacune des commandes du langage
- * sera représentée par une classe : Abstrait, ClasseDebut, ClasseFin, Attribut,
+ * Chacune des commandes du langage sera représentée par une classe : Abstrait, ClasseDebut, ClasseFin, Attribut,
  * MethodeDebut, Parametre et MethodeFin.
- *
- * Chacune de ces classes doit hériter de la classe
- * Commande.
- *
+ * <p>
+ * Chacune de ces classes doit hériter de la classe Commande.
+ * <p>
  * Elles vont donc automatiquement implémenter l’interface Expression.
  */
 public class ClasseFin extends Commande implements Expression {
-    @Override
-    public void interprete(ContexteInterpretation contexte) {
-        contexte.genFinClasse(this);
-    }
+	@Override
+	public void interprete( ContexteInterpretation contexte ) {
+		contexte.genFinClasse( this );
+	}
 
-    @Override
-    public String toString() {
-        return "ClasseFin";
-    }
+	@Override
+	public String toString() {
+		return "ClasseFin";
+	}
 }
