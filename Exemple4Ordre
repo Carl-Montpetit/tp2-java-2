@@ -1,5 +1,6 @@
 abstrait
 classeDebut( C )
+
 classeDebut( D )
 attribut( String, a1 )
 attribut( String, a2 )
@@ -16,3 +17,4 @@ classeFin
 classeDebut( F )
 classeFin
 classeFin
+abstrait
