@@ -1,7 +1,9 @@
 import java.util.ArrayList;
 
-// Il faudra l'implémenter d'Expression
-// Il va être similaire à Programme dans l'exemple du prof
+/**
+ * Cette classe représente un logiciel qui contient des commandes.
+ * Le logiciel va être interprété par Ordre, GenerateurCode et GenerateurUML.
+ */
 public class Logiciel extends ArrayList<Commande> implements Expression {
 	@Override
 	public void interprete( ContexteInterpretation contexte ) {

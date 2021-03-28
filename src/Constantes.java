@@ -1,3 +1,7 @@
+/**
+ * Cette classe contient des constantes qui sont utilisé par les classes Principal et Interpreteur.
+ */
+
 public class Constantes {
 	//  Messages du programme
 	public static final String MSG_ARRET_PROGRAMME = "Arrêt du programme.";
@@ -7,6 +11,7 @@ public class Constantes {
 	public static final String MSG_ERR_FORMAT_IDENTIFICATEUR = "Un ou des identificateurs d'une des commandes ne " +
             "sont" +
 			" pas écrits dans le bon format.";
+	public static final String MSG_ERR_ORDRE = "L'ordre des commandes est incorrecte dans le logiciel.";
 
 	//  Noms des commandes
 	public static final String COMMANDE_CLASSE_FIN = "classeFin";
@@ -16,4 +21,9 @@ public class Constantes {
 	public static final String COMMANDE_METHODE_DEBUT = "methodeDebut";
 	public static final String COMMANDE_ATTRIBUT = "attribut";
 	public static final String COMMANDE_PARAMETRE = "parametre";
+
+	//	Noms des interpréteurs
+	public static final String NOM_INTERPRETEUR_ORDRE = "Ordre";
+	public static final String NOM_INTERPRETEUR_CODE = "GenerateurCode";
+	public static final String NOM_INTERPRETEUR_UML = "GenerateurUML";
 }

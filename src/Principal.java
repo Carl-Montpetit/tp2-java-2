@@ -3,6 +3,7 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
+import java.util.function.Supplier;
 
 /**
  * Tp2 INF2120
@@ -27,13 +28,44 @@ public class Principal {
         ArrayList<String> fichier = lireFichier(nomFichier);
 //        System.out.println(fichier);
 
+//        Vérifie la syntaxe du fichier
         verificationNbCommandes(fichier);
 //        System.out.println("good");
         verificationCommandeSyntaxe(fichier);
 
+//        Crée le logiciel à l'aide du fichier
         Logiciel logiciel = transformerListe(fichier);
 //        System.out.println(logiciel);
 
+//        Applique le 1er interpréteur sur le logiciel
+        Interpreteur choix = Interpreteur.ORDRE;
+        ContexteInterpretation etat;
+        etat = choix.supplier.get();
+        logiciel.interprete(etat);
+        System.out.println(etat);
+
+//        Applique le 2e interpréteur sur le logiciel
+
+//        Applique le 3e interpréteur sur le logiciel
+
+    }
+
+    /**
+     * Cette classe contient les suppliers de tous les interpréteurs.
+     */
+    public enum Interpreteur {
+        ORDRE(Constantes.NOM_INTERPRETEUR_ORDRE,Ordre::new),
+        GENERATEUR_CODE(Constantes.NOM_INTERPRETEUR_CODE,GenerateurCode::new),
+        GENERATEUR_UML(Constantes.NOM_INTERPRETEUR_UML,GenerateurUML::new)
+        ;
+
+        public String nom;
+        public Supplier<ContexteInterpretation> supplier;
+
+        private Interpreteur(String nom, Supplier<ContexteInterpretation> supplier) {
+            this.nom = nom;
+            this.supplier = supplier;
+        }
     }
 
     /******************************************************************************************************************/
