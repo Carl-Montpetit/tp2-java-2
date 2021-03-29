@@ -10,7 +10,7 @@
 6. **Faire les méthodes pour la classe GenerateurCode (2e interpréteur) -> Carl (En cours)**
     * ~~abstract~~
     * ~~classeDebut~~
-    * classeFin -> _Depiler?? je suis pas certain encore de ca_
+    * ~~classeFin~~ -> _Depiler?? je suis pas certain encore de ca_
     * ~~attribut~~
     * ~~methodeDebut~~
     * ~~parametre~~

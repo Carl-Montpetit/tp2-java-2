@@ -2,6 +2,8 @@
  * Créé par Carl.M le 19/Mar/2021 à 5:54 a.m.
  */
 
+import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Stack;
 
@@ -17,6 +19,8 @@ public class GenerateurUML implements ContexteInterpretation {
 	Stack<Etat> pileEtat = new Stack<Etat>();
 	boolean estAbstrait = false;
 	boolean estPremierParametre = false;
+	File fichierUML = new File("uml.tex");
+	Etat etat = new Etat();
 
 	@Override
 	public void genAbstrait( Abstrait abstrait ) {
@@ -25,6 +29,43 @@ public class GenerateurUML implements ContexteInterpretation {
 
 	@Override
 	public void genDebutClasse( ClasseDebut classeDebut ) {
+		try {
+			FileWriter monFileWriter = new FileWriter(fichierUML,true);
+
+			if( nbrClasse == 0){
+				monFileWriter.write(DescriptionLatex14.PAGE_DEBUT);
+
+			}else{
+
+				if(pileEtat.peek().premierClasse){
+					monFileWriter.write(DescriptionLatex14.CLASSE_DEBUT);
+					pileEtat.peek().premierClasse = false;
+
+				}
+				monFileWriter.write(DescriptionLatex14.CLASSE_INTERNE_PREFIX);
+
+			}
+
+			pileEtat.push(etat);
+			monFileWriter.write(DescriptionLatex14.CLASSE_DEBUT);
+
+			if(estAbstrait){
+				monFileWriter.write(DescriptionLatex14.ABSTRAIT_DEBUT);
+
+			}
+
+			monFileWriter.write(classeDebut.nomClasse);
+
+			if(estAbstrait){
+				monFileWriter.write(DescriptionLatex14.ABSTRAIT_FIN);
+				estAbstrait = false;
+			}
+
+			nbrClasse++;
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 
 	}
 

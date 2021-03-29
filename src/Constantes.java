@@ -12,6 +12,7 @@ public class Constantes {
             "sont" +
 			" pas écrits dans le bon format.";
 	public static final String MSG_ERR_ORDRE = "L'ordre des commandes est incorrecte dans le logiciel.";
+	public static final String MSG_ERR_GEN_CODE = "Une erreur d'ecriture est survenue.";
 
 	//  Noms des commandes
 	public static final String COMMANDE_CLASSE_FIN = "classeFin";

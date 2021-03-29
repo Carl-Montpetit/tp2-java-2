@@ -43,7 +43,7 @@ public class GenerateurCode implements ContexteInterpretation {
 			monFileWriter.write( " {\n" );
 			monFileWriter.close();
 		} catch ( IOException e ) {
-			System.err.println( "Une erreur d'ecriture est survenue." );
+			System.err.println( Constantes.MSG_ERR_GEN_CODE );
 			e.printStackTrace();
 		}
 		estAbstrait = false;
@@ -56,7 +56,7 @@ public class GenerateurCode implements ContexteInterpretation {
 			monFileWriter.write( "}" );
 			monFileWriter.close();
 		} catch ( IOException e ) {
-			System.err.println( "Une erreur d'ecriture est survenue." );
+			System.err.println( Constantes.MSG_ERR_GEN_CODE );
 			e.printStackTrace();
 		}
 		topFichier = pileFichier.pop();
@@ -77,7 +77,7 @@ public class GenerateurCode implements ContexteInterpretation {
 			monFileWriter.write( "\t}\n " );
 			monFileWriter.close();
 		} catch ( IOException e ) {
-			System.err.println( "Une erreur d'ecriture est survenue." );
+			System.err.println( Constantes.MSG_ERR_GEN_CODE );
 			e.printStackTrace();
 		}
 	}
@@ -95,7 +95,7 @@ public class GenerateurCode implements ContexteInterpretation {
 			estPremierParametre = true;
 			monFileWriter.close();
 		} catch ( IOException e ) {
-			System.err.println( "Une erreur d'ecriture est survenue." );
+			System.err.println( Constantes.MSG_ERR_GEN_CODE );
 			e.printStackTrace();
 		}
 	}
@@ -110,7 +110,7 @@ public class GenerateurCode implements ContexteInterpretation {
 			monFileWriter.write( parametre.typeParametre + " " + parametre.nomParametre );
 			monFileWriter.close();
 		} catch ( IOException e ) {
-			System.err.println( "Une erreur d'ecriture est survenue." );
+			System.err.println( Constantes.MSG_ERR_GEN_CODE );
 			e.printStackTrace();
 		}
 		estPremierParametre = false;
@@ -128,7 +128,7 @@ public class GenerateurCode implements ContexteInterpretation {
 			}
 			monFileWriter.close();
 		} catch ( IOException e ) {
-			System.err.println( "Une erreur d'ecriture est survenue." );
+			System.err.println( Constantes.MSG_ERR_GEN_CODE );
 			e.printStackTrace();
 		}
 		estAbstrait = false;

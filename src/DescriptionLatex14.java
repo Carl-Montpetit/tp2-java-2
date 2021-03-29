@@ -1,5 +1,3 @@
-package inf2120.tp2;
-
 public class DescriptionLatex14 {
     public static final String FICHIER_DEBUT =
     """

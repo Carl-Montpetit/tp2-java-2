@@ -38,21 +38,22 @@ public class Principal {
 //		System.out.println( logiciel );
 
 //        Applique le 1er interpréteur sur le logiciel
-//		Interpreteur choix1 = Interpreteur.ORDRE;
-//		ContexteInterpretation etat;
-//		etat = choix1.supplier.get();
-//		logiciel.interprete( etat );
-//		System.out.println( etat );
+		Interpreteur choix1 = Interpreteur.ORDRE;
+		ContexteInterpretation etat1 = choix1.supplier.get();
+		logiciel.interprete( etat1 );
+		System.out.println( etat1 );
 
 //        Applique le 2e interpréteur sur le logiciel
 		Interpreteur choix2 = Interpreteur.GENERATEUR_CODE;
-		ContexteInterpretation etat2;
-		etat2 = choix2.supplier.get();
+		ContexteInterpretation etat2 = choix2.supplier.get();
 		logiciel.interprete( etat2 );
 		System.out.println( etat2 );
 
 //        Applique le 3e interpréteur sur le logiciel
-
+		Interpreteur choix3 = Interpreteur.GENERATEUR_UML;
+		ContexteInterpretation etat3 = choix3.supplier.get();
+		logiciel.interprete( etat3 );
+		System.out.println( etat3 );
 	}
 
 	/**
