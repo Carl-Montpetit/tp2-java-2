@@ -2,6 +2,8 @@
  * Créé par Carl.M le 19/Mar/2021 à 5:54 a.m.
  */
 
+import java.io.IOException;
+
 /**
  * Ensuite, il vous reste à construire une classe implémentant le ContexteInterpretation pour chaque interpréteur. Cette
  * classe va contenir les variables d’instance représentant l’état et va implémenter les méthodes pour chacune des
@@ -47,7 +49,13 @@ public class GenerateurUML implements ContexteInterpretation {
 
 	@Override
 	public void interpreteLogiciel( Logiciel logiciel ) {
-		logiciel.forEach( ( e ) -> e.interprete( this ) );
+		logiciel.forEach( ( e ) -> {
+			try {
+				e.interprete( this );
+			} catch ( IOException ioException ) {
+				ioException.printStackTrace();
+			}
+		} );
 	}
 	/**
 	 * Finalement, pour lancer votre interpréteur, il suffit de construire une instance de la classe de contexte

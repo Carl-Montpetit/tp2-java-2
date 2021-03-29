@@ -1,3 +1,5 @@
+import java.io.IOException;
+
 /**
  * Cette classe est le premier interpréteur. Il va vérifier l'ordre des commandes dans le logiciel.
  */
@@ -90,7 +92,13 @@ public class Ordre implements ContexteInterpretation {
 
 	@Override
 	public void interpreteLogiciel( Logiciel logiciel ) {
-		logiciel.forEach( ( e ) -> e.interprete( this ) );
+		logiciel.forEach( ( e ) -> {
+			try {
+				e.interprete( this );
+			} catch ( IOException ioException ) {
+				ioException.printStackTrace();
+			}
+		} );
 		if(!mode.equals("FClasse") || estAbstrait || nbrOuverture!=0){
             System.err.println(Constantes.MSG_ERR_ORDRE);
             Principal.affichageArret();
