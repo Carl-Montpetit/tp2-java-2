@@ -15,8 +15,9 @@ import java.util.function.Supplier;
  * @nom Chagnon, Lysanne
  * @code_permanent CHAL65550003
  */
-//TODO Quand j'ai ajoute le filewriter pour 2ieme interpreteur ya des exceptions (throws/try/catch) -> **IOException**
-// qui se sont ajouter dans le projet. Bon a noter pour informer. On va peut-etre pouvoir en enlever plus tard.
+//TODO -> Quand j'ai ajoute le filewriter pour le 2ieme interpreteur ya des exceptions (throws/try/catch) ->
+// **IOException**
+// qui se sont ajouter dans le projet. Bon a noter a titre informatif.
 public class Principal {
 
 	public static void main( String[] args ) {
