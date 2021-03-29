@@ -2,6 +2,8 @@
  * Créé par Carl.M le 19/Mar/2021 à 5:07 a.m.
  */
 
+import java.io.IOException;
+
 /**
  * Chacune des commandes du langage sera représentée par une classe : Abstrait, ClasseDebut, ClasseFin, Attribut,
  * MethodeDebut, Parametre et MethodeFin.
@@ -21,7 +23,7 @@ public class MethodeDebut extends Commande implements Expression {
 	}
 
 	@Override
-	public void interprete( ContexteInterpretation contexte ) {
+	public void interprete( ContexteInterpretation contexte ) throws IOException {
 		contexte.genDebutMethode( this );
 	}
 
