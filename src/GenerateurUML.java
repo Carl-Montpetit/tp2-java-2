@@ -3,6 +3,7 @@
  */
 
 import java.io.IOException;
+import java.util.Stack;
 
 /**
  * Ensuite, il vous reste à construire une classe implémentant le ContexteInterpretation pour chaque interpréteur. Cette
@@ -12,6 +13,16 @@ import java.io.IOException;
  * TODO Je suis pas certain de tout ca encore peut etre que ca va aller dans un main??
  */
 public class GenerateurUML implements ContexteInterpretation {
+	int nbrClasse = 0;
+	Stack<Etat> pileEtat = new Stack<Etat>();
+	boolean estAbstrait = false;
+	boolean estPremierParametre = false;
+
+	@Override
+	public void genAbstrait( Abstrait abstrait ) {
+
+	}
+
 	@Override
 	public void genDebutClasse( ClasseDebut classeDebut ) {
 
@@ -23,17 +34,12 @@ public class GenerateurUML implements ContexteInterpretation {
 	}
 
 	@Override
-	public void genDebutMethode( MethodeDebut methodeDebut ) {
-
-	}
-
-	@Override
 	public void genAttribut( Attribut attribut ) {
 
 	}
 
 	@Override
-	public void genAbstrait( Abstrait abstrait ) {
+	public void genDebutMethode( MethodeDebut methodeDebut ) {
 
 	}
 
