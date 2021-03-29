@@ -20,7 +20,7 @@ public class GenerateurUML implements ContexteInterpretation {
 
 	@Override
 	public void genAbstrait( Abstrait abstrait ) {
-
+		estAbstrait = true;
 	}
 
 	@Override

@@ -9,6 +9,7 @@ import java.util.Stack;
 // pile de fichier
 public class GenerateurCode implements ContexteInterpretation {
 	protected File topFichier = null;
+	protected String topNom = null;
 	protected Stack<File> pileFichier = new Stack<File>();
 	protected Stack<String> pileNom = new Stack<String>();
 	protected boolean estAbstrait = false;
@@ -39,7 +40,7 @@ public class GenerateurCode implements ContexteInterpretation {
 			if ( pileNom.size() > 1 ) {
 				monFileWriter.write( "extends " + pileNom.elementAt( pileNom.size() - 2 ) );
 			}
-			monFileWriter.write( " { " );
+			monFileWriter.write( " {\n" );
 			monFileWriter.close();
 		} catch ( IOException e ) {
 			System.err.println( "Une erreur d'ecriture est survenue." );
@@ -52,30 +53,28 @@ public class GenerateurCode implements ContexteInterpretation {
 	public void genFinClasse( ClasseFin classeFin ) throws IOException {
 		FileWriter monFileWriter = new FileWriter( pileFichier.peek(), true );
 		try {
-			monFileWriter.write( " } " );
+			monFileWriter.write( "}" );
 			monFileWriter.close();
 		} catch ( IOException e ) {
 			System.err.println( "Une erreur d'ecriture est survenue." );
 			e.printStackTrace();
 		}
-//		topFichier = pileFichier.pop();
-//		TODO -> je dois depiler ici la pileFichier et la pileNom ??? Il veut dire quoi exactement?? Fort probablement
-//		 qu'il va faloir gerer ca avec l'autre pile pour les fichier ouverts/fermer etc en plus celle la ~fun is
-//		 coming~.
+		topFichier = pileFichier.pop();
+		topNom = pileNom.pop();
 	}
 
 	@Override
 	public void genAttribut( Attribut attribut ) throws IOException {
 		try {
 			FileWriter monFileWriter = new FileWriter( pileFichier.peek(), true );
-			monFileWriter.write( " private " + attribut.typeAttribut + " " + attribut.nomAttribut );
-			monFileWriter.write( " public " + attribut.typeAttribut + " get" + attribut.nomAttribut + "() " + "{" );
-			monFileWriter.write( "  return " + attribut.nomAttribut + " ;" );
-			monFileWriter.write( " } " );
-			monFileWriter.write( " public void set" + attribut.nomAttribut + " (" + attribut.typeAttribut + " "
-					+ attribut.nomAttribut + " ) " + "{" );
-			monFileWriter.write( "  this." + attribut.nomAttribut + " = " + attribut.nomAttribut + "; " );
-			monFileWriter.write( " } " );
+			monFileWriter.write( "\tprivate " + attribut.typeAttribut + " " + attribut.nomAttribut + ";\n");
+			monFileWriter.write( "\tpublic " + attribut.typeAttribut + " get" + attribut.nomAttribut + "() " + "{\n" );
+			monFileWriter.write( "\t\treturn " + attribut.nomAttribut + " ;" );
+			monFileWriter.write( "\t}\n" );
+			monFileWriter.write( "\tpublic void set" + attribut.nomAttribut + " (" + attribut.typeAttribut + " "
+					+ attribut.nomAttribut + " ) " + "{\n" );
+			monFileWriter.write( "\t\tthis." + attribut.nomAttribut + " = " + attribut.nomAttribut + "; " );
+			monFileWriter.write( "\t}\n " );
 			monFileWriter.close();
 		} catch ( IOException e ) {
 			System.err.println( "Une erreur d'ecriture est survenue." );
@@ -88,11 +87,11 @@ public class GenerateurCode implements ContexteInterpretation {
 		try {
 			FileWriter monFileWriter = new FileWriter( pileFichier.peek(), true );
 
-			monFileWriter.write( " public " );
+			monFileWriter.write( "\tpublic " );
 			if ( estAbstrait ) {
-				monFileWriter.write( " abstract " );
+				monFileWriter.write( "\tabstract " );
 			}
-			monFileWriter.write( methodeDebut.typeMethode + " " + methodeDebut.nomMethode + " (" );
+			monFileWriter.write( methodeDebut.typeMethode + " " + methodeDebut.nomMethode + " ( " );
 			estPremierParametre = true;
 			monFileWriter.close();
 		} catch ( IOException e ) {
@@ -123,9 +122,9 @@ public class GenerateurCode implements ContexteInterpretation {
 			FileWriter monFileWriter = new FileWriter( pileFichier.peek(), true );
 			monFileWriter.write( " ) " );
 			if ( estAbstrait ) {
-				monFileWriter.write( " ; " );
+				monFileWriter.write( " ;\n " );
 			} else {
-				monFileWriter.write( " {} " );
+				monFileWriter.write( " {}\n " );
 			}
 			monFileWriter.close();
 		} catch ( IOException e ) {
