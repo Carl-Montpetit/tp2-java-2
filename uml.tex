@@ -32,12 +32,8 @@ node[classeNode]
     {
     \nodepart{one}
 \abstrait{
-A}
-\nodepart{two}
-a1 : String\\
-i1 : int\\
-i2 : int\nodepart{three}
-void '' m1(int)}
+C}
+}
 [level distance=20mm]
 child{
     node[extends] {}
@@ -46,30 +42,32 @@ child{
 node[classeNode]
     {
     \nodepart{one}
-B}
+D\nodepart{two}
+a1 : String\\
+a2 : String}
+[level distance=20mm]
+child{
+    node[extends] {}
+    [level distance=20mm, sibling distance=70mm]
+child{
+node[classeNode]
+    {
+    \nodepart{one}
+E\nodepart{three}
+void '' m1()\\
+\abstrait{
+void '' m2(int, int)}
+}
+}
+}
 }
 child{
 node[classeNode]
     {
     \nodepart{one}
-C\\
-a2 : String}
+F}
 }
 }
-    ;
-    \end{tikzpicture}
-    \end{figure}
-}
-
-\clearpage
-\centering{
-    \begin{figure}
-    \begin{tikzpicture}
-    \path
-node[classeNode]
-    {
-    \nodepart{one}
-D}
     ;
     \end{tikzpicture}
     \end{figure}

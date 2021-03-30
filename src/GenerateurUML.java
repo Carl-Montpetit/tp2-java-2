@@ -12,7 +12,7 @@ public class GenerateurUML implements ContexteInterpretation {
 	boolean estAbstrait = false;
 	boolean estPremierParametre = false;
 	File fichierUML = new File( "uml.tex" );
-	Etat etat = new Etat();
+	Etat etat;
 	Etat dernierEtat = new Etat();
 	boolean debut = true;
 
@@ -35,7 +35,7 @@ public class GenerateurUML implements ContexteInterpretation {
 				}
 				monFileWriter.write( DescriptionLatex14.CLASSE_INTERNE_PREFIX );
 			}
-
+			etat = new Etat();
 			pileEtat.push( etat );
 			monFileWriter.write( DescriptionLatex14.CLASSE_DEBUT );
 

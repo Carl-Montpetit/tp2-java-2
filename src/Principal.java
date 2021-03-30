@@ -26,7 +26,6 @@ public class Principal {
 		String nomFichier = demanderNomFichier( sc );
 
 		ArrayList<String> fichier = lireFichier( nomFichier );
-//		System.out.println( fichier );
 
 //        Vérifie la syntaxe du fichier
 		verificationNbCommandes( fichier );
@@ -35,7 +34,6 @@ public class Principal {
 
 //        Crée le logiciel à l'aide du fichier
 		Logiciel logiciel = transformerListe( fichier );
-//		System.out.println( logiciel );
 
 //        Applique le 1er interpréteur sur le logiciel
 		Interpreteur choix1 = Interpreteur.ORDRE;
@@ -44,10 +42,10 @@ public class Principal {
 		System.out.println( etat1 );
 
 //        Applique le 2e interpréteur sur le logiciel
-//		Interpreteur choix2 = Interpreteur.GENERATEUR_CODE;
-//		ContexteInterpretation etat2 = choix2.supplier.get();
-//		logiciel.interprete( etat2 );
-//		System.out.println( etat2 );
+		Interpreteur choix2 = Interpreteur.GENERATEUR_CODE;
+		ContexteInterpretation etat2 = choix2.supplier.get();
+		logiciel.interprete( etat2 );
+		System.out.println( etat2 );
 
 //        Applique le 3e interpréteur sur le logiciel
 		Interpreteur choix3 = Interpreteur.GENERATEUR_UML;
