@@ -1,5 +1,5 @@
 /**
- * Créé par Carl.M le 29/Mar/2021 à 4:00 a.m.
+ * Cette classe est utilisée par GenerateurUML.
  */
 public class Etat {
 	public boolean premierAttribut = true;

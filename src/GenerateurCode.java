@@ -3,9 +3,9 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Stack;
 
-// Il va implémenter ContexteInterpretation
-// C'est le deuxième interpréteur
-// pile de fichier
+/**
+ * Cette classe est le deuxième interpréteur. Elle va générer du code Java.
+ */
 public class GenerateurCode implements ContexteInterpretation {
 	protected File topFichier = null;
 	protected String topNom = null;

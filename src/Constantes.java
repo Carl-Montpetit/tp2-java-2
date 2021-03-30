@@ -1,5 +1,6 @@
 /**
- * Cette classe contient des constantes qui sont utilisé par les classes Principal et Interpreteur.
+ * Cette classe contient des constantes qui sont utilisé par les classes Principal, Interpreteur, Ordre,
+ * GenerateurCode et GenerateurUML.
  */
 
 public class Constantes {

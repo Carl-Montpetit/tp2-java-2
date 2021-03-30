@@ -3,7 +3,9 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Stack;
 
-// TODO -> Verifier si c'est necessaire d'ajouter des \n, \t ou \r dans les ~~write~~
+/**
+ * Cette classe est le troisième interpréteur. Elle va construire un fichier LaTeX qui contient un diagramme UML.
+ */
 public class GenerateurUML implements ContexteInterpretation {
 	int nbrClasse = 0;
 	Stack<Etat> pileEtat = new Stack<Etat>();

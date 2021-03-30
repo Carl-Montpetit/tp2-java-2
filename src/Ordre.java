@@ -1,7 +1,7 @@
 import java.io.IOException;
 
 /**
- * Cette classe est le premier interpréteur. Il va vérifier l'ordre des commandes dans le logiciel.
+ * Cette classe est le premier interpréteur. Elle va vérifier l'ordre des commandes dans le logiciel.
  */
 public class Ordre implements ContexteInterpretation {
 
