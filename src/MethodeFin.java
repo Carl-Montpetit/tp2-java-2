@@ -1,7 +1,3 @@
-/**
- * Créé par Carl.M le 19/Mar/2021 à 5:08 a.m.
- */
-
 import java.io.IOException;
 
 /**

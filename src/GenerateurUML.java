@@ -1,26 +1,17 @@
-/**
- * Créé par Carl.M le 19/Mar/2021 à 5:54 a.m.
- */
-
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Stack;
 
-/**
- * Ensuite, il vous reste à construire une classe implémentant le ContexteInterpretation pour chaque interpréteur. Cette
- * classe va contenir les variables d’instance représentant l’état et va implémenter les méthodes pour chacune des
- * actions.
- * <p>
- * TODO Je suis pas certain de tout ca encore peut etre que ca va aller dans un main??
- */
+// TODO -> Verifier si c'est necessaire d'ajouter des \n, \t ou \r dans les ~~write~~
 public class GenerateurUML implements ContexteInterpretation {
 	int nbrClasse = 0;
 	Stack<Etat> pileEtat = new Stack<Etat>();
 	boolean estAbstrait = false;
 	boolean estPremierParametre = false;
-	File fichierUML = new File("uml.tex");
+	File fichierUML = new File( "uml.tex" );
 	Etat etat = new Etat();
+	Etat dernierEtat = new Etat();
 
 	@Override
 	public void genAbstrait( Abstrait abstrait ) {
@@ -30,68 +21,144 @@ public class GenerateurUML implements ContexteInterpretation {
 	@Override
 	public void genDebutClasse( ClasseDebut classeDebut ) {
 		try {
-			FileWriter monFileWriter = new FileWriter(fichierUML,true);
+			FileWriter monFileWriter = new FileWriter( fichierUML, true );
 
-			if( nbrClasse == 0){
-				monFileWriter.write(DescriptionLatex14.PAGE_DEBUT);
-
-			}else{
-
-				if(pileEtat.peek().premierClasse){
-					monFileWriter.write(DescriptionLatex14.CLASSE_DEBUT);
+			if ( nbrClasse == 0 ) {
+				monFileWriter.write( DescriptionLatex14.PAGE_DEBUT );
+			} else {
+				if ( pileEtat.peek().premierClasse ) {
+					monFileWriter.write( DescriptionLatex14.CLASSE_FIN );
+					monFileWriter.write( DescriptionLatex14.LISTE_CLASSE_DEBUT );
 					pileEtat.peek().premierClasse = false;
-
 				}
-				monFileWriter.write(DescriptionLatex14.CLASSE_INTERNE_PREFIX);
-
+				monFileWriter.write( DescriptionLatex14.CLASSE_INTERNE_PREFIX );
 			}
 
-			pileEtat.push(etat);
-			monFileWriter.write(DescriptionLatex14.CLASSE_DEBUT);
+			pileEtat.push( etat );
+			monFileWriter.write( DescriptionLatex14.CLASSE_DEBUT );
 
-			if(estAbstrait){
-				monFileWriter.write(DescriptionLatex14.ABSTRAIT_DEBUT);
-
+			if ( estAbstrait ) {
+				monFileWriter.write( DescriptionLatex14.ABSTRAIT_DEBUT );
 			}
 
-			monFileWriter.write(classeDebut.nomClasse);
+			monFileWriter.write( classeDebut.nomClasse );
 
-			if(estAbstrait){
-				monFileWriter.write(DescriptionLatex14.ABSTRAIT_FIN);
+			if ( estAbstrait ) {
+				monFileWriter.write( DescriptionLatex14.ABSTRAIT_FIN );
 				estAbstrait = false;
 			}
-
 			nbrClasse++;
-
-		} catch (IOException e) {
+			monFileWriter.close();
+		} catch ( IOException e ) {
+			System.err.println( Constantes.MSG_ERR_GEN_CODE );
 			e.printStackTrace();
 		}
-
 	}
 
 	@Override
 	public void genFinClasse( ClasseFin classeFin ) {
+		try {
+			FileWriter monFileWriter = new FileWriter( fichierUML, true );
 
+			nbrClasse--;
+			if ( pileEtat.peek().premierClasse ) {
+				monFileWriter.write( DescriptionLatex14.CLASSE_FIN );
+			} else {
+				monFileWriter.write( DescriptionLatex14.LISTE_CLASSE_FIN );
+			}
+			if ( nbrClasse == 0 ) {
+				monFileWriter.write( DescriptionLatex14.PAGE_FIN );
+			} else {
+				monFileWriter.write( DescriptionLatex14.CLASSE_INTERNE_SUFFIX );
+			}
+			dernierEtat = pileEtat.pop();
+			monFileWriter.close();
+		} catch ( IOException e ) {
+			System.err.println( Constantes.MSG_ERR_GEN_CODE );
+			e.printStackTrace();
+		}
 	}
 
 	@Override
 	public void genAttribut( Attribut attribut ) {
+		try {
+			FileWriter monFileWriter = new FileWriter( fichierUML, true );
 
+			if ( pileEtat.peek().premierAttribut ) {
+				monFileWriter.write( DescriptionLatex14.LISTE_ATTRIBUT_DEBUT );
+				pileEtat.peek().premierAttribut = false;
+			} else {
+				monFileWriter.write( DescriptionLatex14.LISTE_ATTRIBUT_SEP );
+			}
+//			TODO -> **important** -> A noter, pas de fin de ligne a la fin du ~write~ ci bas!
+			monFileWriter.write( attribut.nomAttribut + " : " + attribut.typeAttribut ); // ici
+		} catch ( IOException e ) {
+			System.err.println( Constantes.MSG_ERR_GEN_CODE );
+			e.printStackTrace();
+		}
 	}
 
 	@Override
 	public void genDebutMethode( MethodeDebut methodeDebut ) {
+		try {
+			FileWriter monFileWriter = new FileWriter( fichierUML, true );
 
+			if ( pileEtat.peek().premierMethode ) {
+				monFileWriter.write( DescriptionLatex14.LISTE_METHODE_DEBUT );
+				pileEtat.peek().premierMethode = false;
+			} else {
+				monFileWriter.write( DescriptionLatex14.LISTE_METHODE_SEP );
+			}
+			if ( estAbstrait ) {
+				monFileWriter.write( DescriptionLatex14.ABSTRAIT_DEBUT );
+			}
+//			TODO -> Ici, "" represente le -> " void " dans l'enonce
+			if ( methodeDebut.typeMethode != "" ) {
+//				TODO -> A verifier si c'est bon pour -> " '' "
+				monFileWriter.write( methodeDebut.typeMethode + " '' " );
+			}
+			monFileWriter.write( methodeDebut.nomMethode );
+			monFileWriter.write( DescriptionLatex14.PARAMETRE_DEBUT );
+			estPremierParametre = true;
+			monFileWriter.close();
+		} catch ( IOException e ) {
+			System.err.println( Constantes.MSG_ERR_GEN_CODE );
+			e.printStackTrace();
+		}
 	}
 
 	@Override
 	public void genParametre( Parametre parametre ) {
+		try {
+			FileWriter monFileWriter = new FileWriter( fichierUML, true );
 
+			if ( estPremierParametre ) {
+				estPremierParametre = false;
+			} else {
+				monFileWriter.write( DescriptionLatex14.PARAMETRE_SEP );
+			}
+			monFileWriter.write( parametre.typeParametre );
+			monFileWriter.close();
+		} catch ( IOException e ) {
+			System.err.println( Constantes.MSG_ERR_GEN_CODE );
+			e.printStackTrace();
+		}
 	}
 
 	@Override
 	public void genFinMethode( MethodeFin methodeFin ) {
+		try {
+			FileWriter monFileWriter = new FileWriter( fichierUML, true );
 
+			monFileWriter.write( DescriptionLatex14.PARAMETRE_FIN );
+			if ( estAbstrait ) {
+				monFileWriter.write( DescriptionLatex14.ABSTRAIT_FIN );
+			}
+			estAbstrait = false;
+		} catch ( IOException e ) {
+			System.err.println( Constantes.MSG_ERR_GEN_CODE );
+			e.printStackTrace();
+		}
 	}
 
 	@Override
@@ -104,9 +171,16 @@ public class GenerateurUML implements ContexteInterpretation {
 			}
 		} );
 	}
-	/**
-	 * Finalement, pour lancer votre interpréteur, il suffit de construire une instance de la classe de contexte
-	 * d’interprétation de l’interpréteur voulu. Ensuite, il reste à démarrer l’interprétation du programme avec
-	 * le contexte d’interprétation.
-	 */
+
+	@Override
+	public String toString() {
+		return "GenerateurUML{" +
+				"nbrClasse=" + nbrClasse +
+				", pileEtat=" + pileEtat +
+				", estAbstrait=" + estAbstrait +
+				", estPremierParametre=" + estPremierParametre +
+				", fichierUML=" + fichierUML +
+				", etat=" + etat +
+				'}';
+	}
 }

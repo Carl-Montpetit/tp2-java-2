@@ -1,7 +1,6 @@
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.nio.file.Files;
 import java.util.Stack;
 
 // Il va implémenter ContexteInterpretation
@@ -26,9 +25,8 @@ public class GenerateurCode implements ContexteInterpretation {
 	public void genDebutClasse( ClasseDebut classeDebut ) throws IOException {
 		File monFichier = new File( classeDebut.nomClasse + ".java" );
 		String nomMonFichier = classeDebut.nomClasse;
-		// Ajout un nouveau fichier sur la pile
+
 		pileFichier.push( monFichier );
-		// Ajout un nouveau nom sur l'autre pile (nom)
 		pileNom.push( nomMonFichier );
 		try {
 			FileWriter monFileWriter = new FileWriter( pileFichier.peek() );
@@ -67,7 +65,7 @@ public class GenerateurCode implements ContexteInterpretation {
 	public void genAttribut( Attribut attribut ) throws IOException {
 		try {
 			FileWriter monFileWriter = new FileWriter( pileFichier.peek(), true );
-			monFileWriter.write( "\tprivate " + attribut.typeAttribut + " " + attribut.nomAttribut + ";\n");
+			monFileWriter.write( "\tprivate " + attribut.typeAttribut + " " + attribut.nomAttribut + ";\n" );
 			monFileWriter.write( "\tpublic " + attribut.typeAttribut + " get" + attribut.nomAttribut + "() " + "{\n" );
 			monFileWriter.write( "\t\treturn " + attribut.nomAttribut + " ;" );
 			monFileWriter.write( "\t}\n" );

@@ -6,4 +6,12 @@ public class Etat {
 	public boolean premierMethode = true;
 	public boolean premierClasse = true;
 
+	@Override
+	public String toString() {
+		return "Etat{" +
+				"premierAttribut=" + premierAttribut +
+				", premierMethode=" + premierMethode +
+				", premierClasse=" + premierClasse +
+				'}';
+	}
 }

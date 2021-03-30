@@ -1,8 +1,4 @@
 /**
- * Créé par Carl.M le 19/Mar/2021 à 5:00 a.m.
- */
-
-/**
  * Chacune des commandes du langage sera représentée par une classe : Abstrait, ClasseDebut, ClasseFin, Attribut,
  * MethodeDebut, Parametre et MethodeFin.
  * <p>

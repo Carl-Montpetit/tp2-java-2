@@ -9,7 +9,7 @@ public class Constantes {
 	public static final String MSG_ERR_COMMANDES = "Le fichier contient une ligne qui a 0 ou plus d'une commande.";
 	public static final String MSG_ERR_TYPE_COMMANDE = "Le fichier contient une ligne de commande mal écrite.";
 	public static final String MSG_ERR_FORMAT_IDENTIFICATEUR = "Un ou des identificateurs d'une des commandes ne " +
-            "sont" +
+			"sont" +
 			" pas écrits dans le bon format.";
 	public static final String MSG_ERR_ORDRE = "L'ordre des commandes est incorrecte dans le logiciel.";
 	public static final String MSG_ERR_GEN_CODE = "Une erreur d'ecriture est survenue.";
