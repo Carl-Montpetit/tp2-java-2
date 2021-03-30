@@ -166,7 +166,7 @@ public class GenerateurUML implements ContexteInterpretation {
 	@Override
 	public void interpreteLogiciel( Logiciel logiciel ) {
 		try {
-			FileWriter fileWriter = new FileWriter( fichierUML,true);
+			FileWriter fileWriter = new FileWriter( fichierUML);
 			fileWriter.write(DescriptionLatex14.FICHIER_DEBUT);
 			fileWriter.close();
 			logiciel.forEach( ( e ) -> {
