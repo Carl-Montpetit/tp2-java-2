@@ -44,10 +44,10 @@ public class Principal {
 		System.out.println( etat1 );
 
 //        Applique le 2e interpréteur sur le logiciel
-		Interpreteur choix2 = Interpreteur.GENERATEUR_CODE;
-		ContexteInterpretation etat2 = choix2.supplier.get();
-		logiciel.interprete( etat2 );
-		System.out.println( etat2 );
+//		Interpreteur choix2 = Interpreteur.GENERATEUR_CODE;
+//		ContexteInterpretation etat2 = choix2.supplier.get();
+//		logiciel.interprete( etat2 );
+//		System.out.println( etat2 );
 
 //        Applique le 3e interpréteur sur le logiciel
 		Interpreteur choix3 = Interpreteur.GENERATEUR_UML;

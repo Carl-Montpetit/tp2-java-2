@@ -12,6 +12,7 @@ public class GenerateurUML implements ContexteInterpretation {
 	File fichierUML = new File( "uml.tex" );
 	Etat etat = new Etat();
 	Etat dernierEtat = new Etat();
+	boolean debut = true;
 
 	@Override
 	public void genAbstrait( Abstrait abstrait ) {
@@ -22,7 +23,6 @@ public class GenerateurUML implements ContexteInterpretation {
 	public void genDebutClasse( ClasseDebut classeDebut ) {
 		try {
 			FileWriter monFileWriter = new FileWriter( fichierUML, true );
-
 			if ( nbrClasse == 0 ) {
 				monFileWriter.write( DescriptionLatex14.PAGE_DEBUT );
 			} else {
@@ -91,7 +91,8 @@ public class GenerateurUML implements ContexteInterpretation {
 				monFileWriter.write( DescriptionLatex14.LISTE_ATTRIBUT_SEP );
 			}
 //			TODO -> **important** -> A noter, pas de fin de ligne a la fin du ~write~ ci bas!
-			monFileWriter.write( attribut.nomAttribut + " : " + attribut.typeAttribut ); // ici
+			monFileWriter.write( attribut.nomAttribut + " : " + attribut.typeAttribut );
+			monFileWriter.close();
 		} catch ( IOException e ) {
 			System.err.println( Constantes.MSG_ERR_GEN_CODE );
 			e.printStackTrace();
@@ -113,7 +114,7 @@ public class GenerateurUML implements ContexteInterpretation {
 				monFileWriter.write( DescriptionLatex14.ABSTRAIT_DEBUT );
 			}
 //			TODO -> Ici, "" represente le -> " void " dans l'enonce
-			if ( methodeDebut.typeMethode != "" ) {
+			if (!methodeDebut.typeMethode.equals("")) {
 //				TODO -> A verifier si c'est bon pour -> " '' "
 				monFileWriter.write( methodeDebut.typeMethode + " '' " );
 			}
@@ -154,6 +155,7 @@ public class GenerateurUML implements ContexteInterpretation {
 			if ( estAbstrait ) {
 				monFileWriter.write( DescriptionLatex14.ABSTRAIT_FIN );
 			}
+			monFileWriter.close();
 			estAbstrait = false;
 		} catch ( IOException e ) {
 			System.err.println( Constantes.MSG_ERR_GEN_CODE );
@@ -163,13 +165,25 @@ public class GenerateurUML implements ContexteInterpretation {
 
 	@Override
 	public void interpreteLogiciel( Logiciel logiciel ) {
-		logiciel.forEach( ( e ) -> {
-			try {
-				e.interprete( this );
-			} catch ( IOException ioException ) {
-				ioException.printStackTrace();
-			}
-		} );
+		try {
+			FileWriter fileWriter = new FileWriter( fichierUML,true);
+			fileWriter.write(DescriptionLatex14.FICHIER_DEBUT);
+			fileWriter.close();
+			logiciel.forEach( ( e ) -> {
+				try {
+					e.interprete( this );
+				} catch (IOException ioException) {
+					ioException.printStackTrace();
+				}
+			} );
+			fileWriter = new FileWriter(fichierUML,true);
+			fileWriter.write(DescriptionLatex14.FICHIER_FIN);
+			fileWriter.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
+
 	}
 
 	@Override
