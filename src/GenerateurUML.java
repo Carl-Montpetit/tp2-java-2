@@ -20,7 +20,7 @@ public class GenerateurUML implements ContexteInterpretation {
 	public void genAbstrait( Abstrait abstrait ) {
 		estAbstrait = true;
 	}
-//	TODO -> Le nbr de if, for et try depasse 5 -> 6 si on compte le if dans le else -> grave ou pas?
+
 	@Override
 	public void genDebutClasse( ClasseDebut classeDebut ) {
 		try {
