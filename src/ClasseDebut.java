@@ -9,7 +9,6 @@ import java.io.IOException;
  * Elles vont donc automatiquement implémenter l’interface Expression.
  */
 public class ClasseDebut extends Commande implements Expression {
-
 	public String nomClasse;
 
 	public ClasseDebut( String nomClasse ) {

@@ -1,6 +1,6 @@
 /**
- * Cette classe contient des constantes qui sont utilisé par les classes Principal, Interpreteur, Ordre,
- * GenerateurCode et GenerateurUML.
+ * Cette classe contient des constantes qui sont utilisé par les classes Principal, Interpreteur, Ordre, GenerateurCode
+ * et GenerateurUML.
  */
 
 public class Constantes {
@@ -28,4 +28,6 @@ public class Constantes {
 	public static final String NOM_INTERPRETEUR_ORDRE = "Ordre";
 	public static final String NOM_INTERPRETEUR_CODE = "GenerateurCode";
 	public static final String NOM_INTERPRETEUR_UML = "GenerateurUML";
+
+	private Constantes() {}
 }

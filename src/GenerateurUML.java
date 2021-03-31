@@ -8,7 +8,7 @@ import java.util.Stack;
  */
 public class GenerateurUML implements ContexteInterpretation {
 	int nbrClasse = 0;
-	Stack<Etat> pileEtat = new Stack<Etat>();
+	Stack<Etat> pileEtat = new Stack<>();
 	boolean estAbstrait = false;
 	boolean estPremierParametre = false;
 	File fichierUML = new File( "uml.tex" );
@@ -20,7 +20,7 @@ public class GenerateurUML implements ContexteInterpretation {
 	public void genAbstrait( Abstrait abstrait ) {
 		estAbstrait = true;
 	}
-
+//	TODO -> Le nbr de if, for et try depasse 5 -> 6 si on compte le if dans le else -> grave ou pas?
 	@Override
 	public void genDebutClasse( ClasseDebut classeDebut ) {
 		try {
@@ -92,7 +92,6 @@ public class GenerateurUML implements ContexteInterpretation {
 			} else {
 				monFileWriter.write( DescriptionLatex14.LISTE_ATTRIBUT_SEP );
 			}
-//			TODO -> **important** -> A noter, pas de fin de ligne a la fin du ~write~ ci bas!
 			monFileWriter.write( attribut.nomAttribut + " : " + attribut.typeAttribut );
 			monFileWriter.close();
 		} catch ( IOException e ) {
@@ -115,9 +114,7 @@ public class GenerateurUML implements ContexteInterpretation {
 			if ( estAbstrait ) {
 				monFileWriter.write( DescriptionLatex14.ABSTRAIT_DEBUT );
 			}
-//			TODO -> Ici, "" represente le -> " void " dans l'enonce
 			if (!methodeDebut.typeMethode.equals("")) {
-//				TODO -> A verifier si c'est bon pour -> " '' "
 				monFileWriter.write( methodeDebut.typeMethode + " '' " );
 			}
 			monFileWriter.write( methodeDebut.nomMethode );
@@ -171,7 +168,7 @@ public class GenerateurUML implements ContexteInterpretation {
 			FileWriter fileWriter = new FileWriter( fichierUML);
 			fileWriter.write(DescriptionLatex14.FICHIER_DEBUT);
 			fileWriter.close();
-			logiciel.forEach( ( e ) -> {
+			logiciel.forEach( e  -> {
 				try {
 					e.interprete( this );
 				} catch (IOException ioException) {

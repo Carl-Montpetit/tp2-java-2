@@ -14,8 +14,6 @@ public class GenerateurCode implements ContexteInterpretation {
 	protected boolean estAbstrait = false;
 	protected boolean estPremierParametre = false;
 
-	//	 TODO -> Pas encore parfait, mais ca avance! Va rester a bien gerer la progression de l'interpreteur par
-	//	  rapport a la pile de fichiers et celle de noms (des fichiers).
 	@Override
 	public void genAbstrait( Abstrait abstrait ) {
 		estAbstrait = true;

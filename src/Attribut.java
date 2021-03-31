@@ -9,7 +9,6 @@ import java.io.IOException;
  * Elles vont donc automatiquement implémenter l’interface Expression.
  */
 public class Attribut extends Commande implements Expression {
-
 	public String typeAttribut;
 	public String nomAttribut;
 

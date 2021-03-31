@@ -15,11 +15,7 @@ import java.util.function.Supplier;
  * @nom Chagnon, Lysanne
  * @code_permanent CHAL65550003
  */
-//TODO -> Quand j'ai ajoute le filewriter pour le 2ieme interpreteur ya des exceptions (throws/try/catch) ->
-// **IOException**
-// qui se sont ajouter dans le projet. Bon a noter a titre informatif.
 public class Principal {
-
 	public static void main( String[] args ) {
 //        Demander le nom du fichier et créer un ArrayList contenant les lignes non vides du fichier sans les espaces.
 		Scanner sc = new Scanner( System.in );
@@ -74,7 +70,6 @@ public class Principal {
 	/******************************************************************************************************************/
 	// Méthodes d'affichage
 	/******************************************************************************************************************/
-
 	/**
 	 * Affiche le message d'arrêt de programme.
 	 */
@@ -86,7 +81,6 @@ public class Principal {
 	/******************************************************************************************************************/
 	// Méthodes d'entrées et de vérification de la syntaxe
 	/******************************************************************************************************************/
-
 	/**
 	 * Retourne le nom du fichier qui sera lu.
 	 *
@@ -100,7 +94,6 @@ public class Principal {
 		nomFichier = scanner.nextLine();
 		return nomFichier;
 	}
-
 
 	/**
 	 * Retourne les lignes du fichier non vides auxquelles on a retiré les espaces sour la forme d'une liste.
@@ -137,7 +130,7 @@ public class Principal {
 	 *
 	 * @param ligne    La ligne dans laquelle il peut y avoir zero, une ou des commandes.
 	 * @param commande La commande qu'on cherche dans la ligne.
-	 * @return Le nomnbre d'occurrence de la commande dans la ligne.
+	 * @return Le nombre d'occurrence de la commande dans la ligne.
 	 */
 	public static int nbCommandeSpec( String ligne, String commande ) {
 		int dernierOcc = 0;
@@ -193,7 +186,6 @@ public class Principal {
 			affichageArret();
 		}
 	}
-
 
 	/**
 	 * Vérifie la syntaxe de la commande de type binaire.
@@ -280,7 +272,6 @@ public class Principal {
 
 		return nom;
 	}
-
 
 	/**
 	 * Retourne la commande unaire décrite par la chaîne de caractères.

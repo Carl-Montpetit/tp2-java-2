@@ -1,4 +1,7 @@
 /**
+ * <p>
+ * Cette classe permet de decrire l'etat.
+ * </p>
  * Cette classe est utilisée par GenerateurUML.
  */
 public class Etat {

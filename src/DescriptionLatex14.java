@@ -1,3 +1,6 @@
+/**
+ * Cette classe decrit la structure d'un fichier latex (version 14).
+ */
 public class DescriptionLatex14 {
     public static final String FICHIER_DEBUT =
     """

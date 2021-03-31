@@ -4,7 +4,6 @@ import java.io.IOException;
  * Cette classe est le premier interpréteur. Elle va vérifier l'ordre des commandes dans le logiciel.
  */
 public class Ordre implements ContexteInterpretation {
-
 	protected String mode = "FClasse";
 	protected boolean estAbstrait = false;
 	protected int nbrOuverture = 0;
@@ -16,7 +15,6 @@ public class Ordre implements ContexteInterpretation {
 			System.err.println( Constantes.MSG_ERR_ORDRE );
 			Principal.affichageArret();
 		}
-
 		nbrOuverture += 1;
 		mode = "DClasse";
 		estAbstrait = false;
@@ -30,10 +28,8 @@ public class Ordre implements ContexteInterpretation {
 			System.err.println( Constantes.MSG_ERR_ORDRE );
 			Principal.affichageArret();
 		}
-
 		nbrOuverture -= 1;
 		mode = "FClasse";
-
 	}
 
 	@Override
@@ -42,10 +38,8 @@ public class Ordre implements ContexteInterpretation {
 			System.err.println( Constantes.MSG_ERR_ORDRE );
 			Principal.affichageArret();
 		}
-
 		mode = "DMethode";
 		estAbstrait = false;
-
 	}
 
 	@Override
@@ -54,9 +48,7 @@ public class Ordre implements ContexteInterpretation {
 			System.err.println( Constantes.MSG_ERR_ORDRE );
 			Principal.affichageArret();
 		}
-
 		mode = "DAttribut";
-
 	}
 
 	@Override
@@ -65,9 +57,7 @@ public class Ordre implements ContexteInterpretation {
 			System.err.println( Constantes.MSG_ERR_ORDRE );
 			Principal.affichageArret();
 		}
-
 		estAbstrait = true;
-
 	}
 
 	@Override
@@ -76,9 +66,7 @@ public class Ordre implements ContexteInterpretation {
 			System.err.println( Constantes.MSG_ERR_ORDRE );
 			Principal.affichageArret();
 		}
-
 		mode = "DParametre";
-
 	}
 
 	@Override
@@ -87,14 +75,12 @@ public class Ordre implements ContexteInterpretation {
 			System.err.println( Constantes.MSG_ERR_ORDRE );
 			Principal.affichageArret();
 		}
-
 		mode = "FMethode";
-
 	}
 
 	@Override
 	public void interpreteLogiciel( Logiciel logiciel ) {
-		logiciel.forEach( ( e ) -> {
+		logiciel.forEach( e -> {
 			try {
 				e.interprete( this );
 			} catch ( IOException ioException ) {
@@ -105,7 +91,6 @@ public class Ordre implements ContexteInterpretation {
 			System.err.println( Constantes.MSG_ERR_ORDRE );
 			Principal.affichageArret();
 		}
-
 	}
 
 	@Override
