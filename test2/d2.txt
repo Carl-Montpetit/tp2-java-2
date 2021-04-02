@@ -1,0 +1,4 @@
+classeDebut( A )
+methodeDebut( void, m )
+attribut( int, x )
+
